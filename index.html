@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // Create a function that gets computer choice;
+        function getComputerChoice() {
+
+            // Set a variable 'choice' that stores the choice ;
+            let choice;
+
+
+            // Create an array of choices;
+            const availableChoices = ["Rock", "Paper", "Scissors"];
+
+            // Code something to select randomly from the array;
+            // Store above code in the variable 'choice'
+            choice = Math.floor(Math.random() * availableChoices.length);
+
+            // Return the array element correspondent of the result of choice;
+
+            return availableChoices[choice];
+
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            //Prompt user for a choice and store in a variable;
+            playerSelection = prompt("Choose you weapon!");
+            //Work on typed string to accept all formats of typing;
+            selectionFirstLetter = (playerSelection.substr(0, 1)).toUpperCase();
+            selectionOtherLetters = (playerSelection.slice(1)).toLowerCase();
+            playerSelection = selectionFirstLetter + selectionOtherLetters;
+            //If the player input correct weapon, run code...;
+            if (playerSelection === "Rock" || playerSelection === "Paper" || playerSelection === "Scissors") {
+
+                //Store computer choice in computerSelection;
+                computerSelection = getComputerChoice();
+
+                //Set parameters for winning and losing;
+                if (playerSelection === computerSelection) {
+                    return "That's a tie!";
+                } else if ((playerSelection === "Rock" && computerSelection == "Scissors") ||
+                    (playerSelection == "Scissors" && computerSelection == "Paper") ||
+                    (playerSelection == "Paper" && computerSelection == "Rock")) {
+
+                    return `You win! ${playerSelection} beats ${computerSelection}`;
+                }
+                else {
+                    return `You lose... ${computerSelection} beats ${playerSelection}`;
+
+                }
+            //... If player doesn't input correct weapon;
+            } else {
+                alert('Input an available weapon!');
+            }
+
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
