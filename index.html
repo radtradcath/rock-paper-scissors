@@ -5,16 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-
-    <button class="button">Rock</button>
-    <button class="button">Paper</button>
-    <button class="button">Scissors</button>
+    <h2>ROCK, PAPER, SCISSORS</h2>
+    <p>Select your Weapon</p>
+    <div class="player-weapons">        
+        <div class="rock-container">
+            <button class="button" id="Rock"><img src="./imgs/rock.png"></button>
+            <p>ROCK</p>
+        </div>
+        <div class="paper-container">
+            <button class="button" id="Paper"><img src="./imgs/paper.png"></button>
+            <p>PAPER</p>
+        </div>
+        <div class="scissors-container">
+            <button class="button" id="Scissors"><img src="./imgs/scissors.png"></button>
+            <p>SCISSORS</p>
+        </div>
+    </div>
     <div class="current-score"></div>
-    
+
 </body>
 
 <script src="./javascript.js"></script>

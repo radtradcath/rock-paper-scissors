@@ -15,44 +15,44 @@ function playRound(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
     console.log(playerSelection, computerSelection);
     if (playerSelection === computerSelection) {
-        
-        return "That's a tie!";
+
+        return currentScore.textContent = `That's a tie! Player: ${userScore}  Computer: ${computerScore}`;
 
     } else if ((playerSelection === "Rock" && computerSelection == "Scissors") ||
         (playerSelection == "Scissors" && computerSelection == "Paper") ||
         (playerSelection == "Paper" && computerSelection == "Rock")) {
 
-        
+
         userScore = userScore + 1;
-        currentScore.textContent = `The current score is Player: ${userScore}  Computer: ${computerScore}`;
-        
+        return currentScore.textContent = `The current score is Player: ${userScore}  Computer: ${computerScore}`;
+
 
     }
     else {
-        
+
         computerScore = computerScore + 1;
-        currentScore.textContent = `The current score is Player: ${userScore}  Computer: ${computerScore}`;
-        
+        return currentScore.textContent = `The current score is Player: ${userScore}  Computer: ${computerScore}`;
+
 
     }
-    
+
 }
 
 buttons.forEach((button) => button.addEventListener('click', () => {
-    playerSelection = button.textContent;
-       
-    playRound(playerSelection,);
+    playerSelection = button.id;
 
+    playRound(playerSelection,);
+    
     if (computerScore == 5) {
         userScore = 0;
         computerScore = 0;
-        currentScore.textContent = "Try again. You lose";
-    }   else if (userScore == 5) {
-            userScore = 0;
+        return currentScore.textContent = "Try again. You lose";
+    } else if (userScore == 5) {
+        userScore = 0;
         computerScore = 0;
-            currentScore.textContent = "Congrats! You win!"
-        }
-    
+        return currentScore.textContent = "Congrats! You win!"
+    }
+
 }));
 
 
