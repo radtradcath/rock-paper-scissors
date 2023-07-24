@@ -12,8 +12,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    computerSelection = getComputerChoice();
-    console.log(playerSelection, computerSelection);
     if (playerSelection === computerSelection) {
 
         return currentScore.textContent = `That's a tie! Player: ${userScore}  Computer: ${computerScore}`;
@@ -41,8 +39,8 @@ function playRound(playerSelection, computerSelection) {
 buttons.forEach((button) => button.addEventListener('click', () => {
     playerSelection = button.id;
 
-    playRound(playerSelection,);
-    
+    playRound(playerSelection, getComputerChoice());
+
     if (computerScore == 5) {
         userScore = 0;
         computerScore = 0;

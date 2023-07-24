@@ -3,8 +3,12 @@
     height: 300px;
     
 }
-
-
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+}
 
 h2 {
     text-align: center;
@@ -12,12 +16,14 @@ h2 {
 
 p {
     text-align: center;
+    font-size: 2em;
 }
 
 .player-weapons {
     display: flex;
     justify-content: space-around;
     text-align: center;
+    align-items: center;
     margin-bottom: 100px;
 }
 
