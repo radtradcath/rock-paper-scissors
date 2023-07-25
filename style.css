@@ -2,11 +2,12 @@
     width: auto;
     height: 300px;
     
+    
 }
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 100vh;
 }
 
@@ -36,8 +37,8 @@ p {
 
 }
 
-.current-score {
-    text-align: center;
-    font-size: large;
-    font-weight: bolder;
+.footer {
+    display: flex;
 }
+
+

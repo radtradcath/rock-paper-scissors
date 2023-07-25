@@ -1,7 +1,12 @@
 const buttons = document.querySelectorAll('.button');
-const currentScore = document.querySelector('.current-score');
+const playerCurrentScore = document.querySelector('.player-current-score');
+const computerCurrentScore = document.querySelector('.computer-current-score');
+const alertWinner = document.querySelector('.alert-winner');
+const footer = document.querySelector('.footer');
+const retry = document.createElement('button');
 let userScore = 0;
 let computerScore = 0;
+let startGame = 1;
 
 
 function getComputerChoice() {
@@ -14,7 +19,7 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
 
-        return currentScore.textContent = `That's a tie! Player: ${userScore}  Computer: ${computerScore}`;
+        return "";
 
     } else if ((playerSelection === "Rock" && computerSelection == "Scissors") ||
         (playerSelection == "Scissors" && computerSelection == "Paper") ||
@@ -22,38 +27,53 @@ function playRound(playerSelection, computerSelection) {
 
 
         userScore = userScore + 1;
-        return currentScore.textContent = `The current score is Player: ${userScore}  Computer: ${computerScore}`;
+        return playerCurrentScore.textContent = `Player: ${userScore}`;
 
 
     }
     else {
 
         computerScore = computerScore + 1;
-        return currentScore.textContent = `The current score is Player: ${userScore}  Computer: ${computerScore}`;
+        return computerCurrentScore.textContent = `Computer: ${computerScore}`;
 
 
     }
 
-}
-
-buttons.forEach((button) => button.addEventListener('click', () => {
+}   
+gameStart()
+function gameStart() {
+    
+buttons.forEach((button) => button.addEventListener('click', function finishGame() {
     playerSelection = button.id;
 
     playRound(playerSelection, getComputerChoice());
 
     if (computerScore == 5) {
-        userScore = 0;
-        computerScore = 0;
-        return currentScore.textContent = "Try again. You lose";
+        footer.appendChild(retry);
+        retry.textContent = "RETRY?";
+        retry.setAttribute('style', 'text-align: center;');
+        retry.addEventListener('click', gameOver);
+        button.removeEventListener('click', finishGame);
+        return alertWinner.textContent = "Try again. You lose";
     } else if (userScore == 5) {
-        userScore = 0;
-        computerScore = 0;
-        return currentScore.textContent = "Congrats! You win!"
+        footer.appendChild(retry);
+        retry.textContent = "RETRY?";
+        retry.setAttribute('style', 'text-align: center;');
+        retry.addEventListener('click', gameOver);
+        button.removeEventListener('click', finishGame);
+        return alertWinner.textContent = "Congrats! You win!"
     }
 
-}));
+}))};
 
-
-
-
-
+function gameOver() {
+    userScore = 0;
+    computerScore = 0;
+    playerCurrentScore.textContent = `Player: ${userScore}`;
+    computerCurrentScore.textContent = `Computer: ${computerScore}`;
+    alertWinner.textContent = "";
+    footer.removeChild(retry);
+    startGame = 1;
+    gameStart();
+    
+}
